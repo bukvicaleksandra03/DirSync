@@ -20,15 +20,25 @@
 #include <strings.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <filesystem>
 
 #include <unordered_map>
+#include <unordered_set>
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <assert.h>
 using namespace std;
 
-#define SYNC_PERIOD 120
+//#define DEBUG
 
-void err_n_die(const char *fmt, ...);
+#define SYNC_PERIOD 10
+#define TRY_TO_RECONNECT_PERIOD 10
+#define PORT_NUM 18200
+#define SA struct sockaddr
+
+void write_out_map(string s, unordered_map<string, uint64_t>& um, ofstream* ofs);
+void write_out_vector(string s, vector<string>& vec, ofstream* ofs);
 
 #endif

@@ -1,0 +1,3 @@
+enkripcija
+kompresija
+checksum

@@ -1,63 +1,55 @@
 #include "sockets_util.hpp"
 #include "file_sys_util.hpp"
+#include "comp.hpp"
 
-/**
- * @param socket_fd Socket file descriptor.
- * @param name Name of the file relative to the directory being synchronized.
- * @param modif_time Last modified time of that file. (in UNIX time)
- */
-void send_fname_and_modif_time(int socket_fd, const string& file_name, uint64_t modif_time)
+void SocketsUtil::send_fname_and_modif_time(const string &file_name, uint64_t modif_time)
 {
+    assert(socket_fd_initialized == true);
+    
     const char* name = file_name.c_str();
+
     // Send name size
-    int name_size = strlen(name);
-    //printf("Sending name: %s with size %d\n", name, name_size);
-    write(socket_fd, &name_size, sizeof(int));
+    size_t name_size = strlen(name);
+    write(socket_fd, &name_size, sizeof(size_t));
     // Send name
     write(socket_fd, name, name_size);
     // Send modification time
     write(socket_fd, &modif_time, sizeof(uint64_t));
+    // Logging
+    log_file->seekp(0, std::ios::end);
+    *log_file << "Sending file: " << file_name << " with mod time: " << modif_time  << " name size: " << name_size << endl;
 }
 
-/**
- * @param socket_fd Socket file descriptor.
- * @param files An unordered map in which files that are received are being placed. 
- * File name and last modification time of that file (as a UNIX timestamp) are being placed.
- */
-void receive_fname_and_modif_time(int socket_fd, unordered_map<string, uint64_t>& files)
+void SocketsUtil::receive_fname_and_modif_time(unordered_map<string, uint64_t>& files)
 {
-    int name_size;
+    assert(socket_fd_initialized == true);
+
+    size_t name_size;
     char *file_name;
     uint64_t modif_time;
+
     // Receiving name size and allocating memory
-    recv(socket_fd, &name_size, sizeof(int), 0);
+    recv(socket_fd, &name_size, sizeof(size_t), 0);
     file_name = (char*)malloc(name_size+1);
     // Receiving file name
     recv(socket_fd, file_name, name_size, 0);
     file_name[name_size] = '\0';
     // Receiving modification time
     recv(socket_fd, &modif_time, sizeof(uint64_t), 0);
-
     string fname = file_name;
     files.insert({fname, modif_time});
+    // Logging
+    log_file->seekp(0, std::ios::end);
+    *log_file << "Recieving file: " << fname << " with mod time: " << modif_time << " name size: " << name_size << endl;
 }
 
-/**
- * @param socket_fd Socket file descriptor.
- * @param dir_name Name of the directory we are synchronizing from.
- * @param file_name Name of the file relative to the directory with name dir_name.
- *
- * @example
- * send_file_over_socket(sockedfd, /home/user, Desktop/fff.txt); 
- *      - through the socket first send the name size (sizeof("Desktop/fff.txt")),
- *      - than send the name ("Desktop/fff.txt"), next send the size of the file,
- *      - finally send the entire file
- */
-void send_file_over_socket(int socket_fd, const string& dir_name, const string& file_name)
+void SocketsUtil::send_file_over_socket(const string& file_name)
 {
+    assert(socket_fd_initialized == true);
+
 	struct stat	obj;
 
-    string full_name = dir_name + '/' + file_name;
+    string full_name = base_dir + '/' + file_name;
 	stat(full_name.c_str(), &obj);
 
     // Send name size
@@ -66,8 +58,9 @@ void send_file_over_socket(int socket_fd, const string& dir_name, const string& 
     // Send name
     write(socket_fd, file_name.c_str(), name_size);
 
-    // Open file
+    // Open file 
 	int file_desc = open(full_name.c_str(), O_RDONLY);
+    if (file_desc < 0) comp->err_n_die("File %s could not be opened.\n", full_name.c_str());
 	// Send file size
 	int file_size = obj.st_size;
 	write(socket_fd, &file_size, sizeof(int));
@@ -85,14 +78,9 @@ void send_file_over_socket(int socket_fd, const string& dir_name, const string& 
     }
 }
 
-/**
- * Receive a file being sent with function send_file_over_socket and place
- * it in a directory dir_name.
- * 
- * @param socket_fd Socket file descriptor.
- * @param dir_name Name of the directory we are synchronizing to.
- */
-void receive_file_over_socket(int socket_fd, const string& dir_name) {
+void SocketsUtil::receive_file_over_socket() {
+    assert(socket_fd_initialized == true);
+
     // Getting File 
 	int file_size;
     int name_size;
@@ -110,9 +98,9 @@ void receive_file_over_socket(int socket_fd, const string& dir_name) {
 	recv(socket_fd, &file_size, sizeof(int), 0);
 	data = (char*)malloc(file_size+1);
 	// Creating a new file, receiving and storing data in the file.
-    string full_name = dir_name + '/' + file_name;
+    string full_name = base_dir + '/' + file_name;
 
-    create_necessary_directories(dir_name, file_name);
+    fsu->create_necessary_dirs(file_name);
 
 	FILE *fp = fopen(full_name.c_str(), "w");
 

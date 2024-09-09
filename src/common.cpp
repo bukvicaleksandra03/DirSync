@@ -1,24 +1,23 @@
 #include "common.hpp"
 
-void err_n_die(const char *fmt, ...) 
-{
-    int errno_save;
-    va_list ap;
-
-    errno_save = errno;
-
-    va_start(ap, fmt);
-    vfprintf(stdout, fmt, ap);
-    fprintf(stdout, "\n");
-    fflush(stdout);
-
-    if (errno_save != 0)
-    {
-        fprintf(stdout, "(errno = %d) : %s\n", errno_save, strerror(errno_save));
-        fprintf(stdout,"\n");
-        fflush(stdout);
+void write_out_map(string s, unordered_map<string, uint64_t>& um, ofstream* ofs) {
+    ofs->seekp(0, std::ios::end);
+    *ofs << s << endl;
+    for (auto& u: um) {
+        ofs->seekp(0, std::ios::end);
+        *ofs << u.first << " - " << u.second << endl;
     }
-    va_end(ap);
+    ofs->seekp(0, std::ios::end);
+    *ofs << endl;
+}
 
-    exit(1);
+void write_out_vector(string s, vector<string>& vec, ofstream* ofs) {
+    ofs->seekp(0, std::ios::end);
+    *ofs << s << endl;
+    for (auto& u: vec) {
+        ofs->seekp(0, std::ios::end);
+        *ofs << u << endl;
+    }
+    ofs->seekp(0, std::ios::end);
+    *ofs << endl;
 }

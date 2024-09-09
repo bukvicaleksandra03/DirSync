@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "client debug",
+            "name": "comp1",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/client",
-            "args": ["127.0.0.0"],
+            "program": "${workspaceFolder}/bin/comp1",
+            "args": [],
             "stopAtEntry": false,
             "environment": [],
             "cwd": ".",
@@ -31,10 +31,10 @@
             "miDebuggerPath": "/usr/bin/gdb"
         },
         {
-            "name": "server debug",
+            "name": "comp2",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/server",
+            "program": "${workspaceFolder}/bin/comp2",
             "args": [],
             "stopAtEntry": false,
             "environment": [],

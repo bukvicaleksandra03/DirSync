@@ -8,19 +8,19 @@ INCDIR=inc
 EXEDIR=bin
 OBJDIR=obj
 
-CLIENT=bin/client
-SERVER=bin/server
+COMP1=bin/comp1
+COMP2=bin/comp2
 
 # Source and test files
 SRCS = $(wildcard $(SRCDIR)/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
-all: $(CLIENT) $(SERVER) $(TEST_TARGET)
+all: $(COMP1) $(COMP2)
 
-$(CLIENT): $(OBJDIR)/client.o $(OBJDIR)/common.o $(OBJDIR)/file_sys_util.o $(OBJDIR)/sockets_util.o | $(EXEDIR)
+$(COMP1): $(OBJDIR)/comp.o $(OBJDIR)/comp1.o $(OBJDIR)/common.o $(OBJDIR)/file_sys_util.o $(OBJDIR)/sockets_util.o $(OBJDIR)/comp1_main.o | $(EXEDIR)
 	$(CXX) $(CXXFLAGS) -o $(@) $(^)
 
-$(SERVER): $(OBJDIR)/server.o $(OBJDIR)/common.o $(OBJDIR)/file_sys_util.o $(OBJDIR)/sockets_util.o | $(EXEDIR)
+$(COMP2): $(OBJDIR)/comp.o $(OBJDIR)/comp2.o $(OBJDIR)/common.o $(OBJDIR)/file_sys_util.o $(OBJDIR)/sockets_util.o $(OBJDIR)/comp2_main.o | $(EXEDIR)
 	$(CXX) $(CXXFLAGS) -o $(@) $(^)
 
 # create .o file from .cpp files in src directory
