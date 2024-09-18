@@ -7,6 +7,11 @@
             "label": "make",
             "type": "shell",
             "command": "make"
+        },
+        {
+            "label": "cmake-build",
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build"
         }
     ]
 }

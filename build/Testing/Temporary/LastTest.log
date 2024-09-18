@@ -1,0 +1,19 @@
+Start testing: Sep 16 14:33 CEST
+----------------------------------------------------------
+1/1 Testing: MapTest
+1/1 Test: MapTest
+Command: "/home/aleksandra/Desktop/DirSync/build/test/unit_tests" "1"
+Directory: /home/aleksandra/Desktop/DirSync/build/test
+"MapTest" start time: Sep 16 14:33 CEST
+Output:
+----------------------------------------------------------
+Print map test successfull!
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MapTest" end time: Sep 16 14:33 CEST
+"MapTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 16 14:33 CEST

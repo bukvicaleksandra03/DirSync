@@ -1,6 +1,56 @@
 #include "sockets_util.hpp"
 #include "file_sys_util.hpp"
-#include "comp.hpp"
+
+ssize_t SocketsUtil::readn(int fd, void * buf, size_t n)
+{
+    ssize_t num_read;       // number of bytes fetched by last read
+    size_t tot_read;        // total number of bytes read so far
+    char *buffer = static_cast<char*>(buf);
+
+    for (tot_read = 0; tot_read < n; ) {
+        num_read = read(fd, buffer, n - tot_read);
+
+        if (num_read == 0) {         // EOF
+            throw SocketError();
+        }
+        if (num_read == -1) {        // error
+            if (errno == EINTR || errno == ECONNRESET || errno == EPIPE) {
+                throw SocketError();
+            }
+            else {
+                throw runtime_error("readn error, errno = " + errno);
+            }
+        }
+        tot_read += num_read;
+        buffer += num_read;
+    }
+
+    return tot_read;
+}
+
+ssize_t SocketsUtil::writen(int fd, const void * buf, size_t n)
+{
+    ssize_t num_written;       // number of bytes written in last write
+    size_t tot_written;        // total number of written read so far
+    const char *buffer = static_cast<const char*>(buf);
+
+    for (tot_written = 0; tot_written < n; ) {
+        num_written = write(fd, buffer, n - tot_written);
+
+        if (num_written == -1) {
+            if (errno == EINTR || errno == ECONNRESET || errno == EPIPE) {
+                throw SocketError();
+            }
+            else {
+                throw runtime_error("writen error");
+            }
+        }
+        tot_written += num_written;
+        buffer += num_written;
+    }
+
+    return tot_written;
+} 
 
 void SocketsUtil::send_fname_and_modif_time(const string &file_name, uint64_t modif_time)
 {
@@ -10,14 +60,11 @@ void SocketsUtil::send_fname_and_modif_time(const string &file_name, uint64_t mo
 
     // Send name size
     size_t name_size = strlen(name);
-    write(socket_fd, &name_size, sizeof(size_t));
+    writen(socket_fd, &name_size, sizeof(size_t));
     // Send name
-    write(socket_fd, name, name_size);
+    writen(socket_fd, name, name_size);
     // Send modification time
-    write(socket_fd, &modif_time, sizeof(uint64_t));
-    // Logging
-    log_file->seekp(0, std::ios::end);
-    *log_file << "Sending file: " << file_name << " with mod time: " << modif_time  << " name size: " << name_size << endl;
+    writen(socket_fd, &modif_time, sizeof(uint64_t));
 }
 
 void SocketsUtil::receive_fname_and_modif_time(unordered_map<string, uint64_t>& files)
@@ -29,18 +76,16 @@ void SocketsUtil::receive_fname_and_modif_time(unordered_map<string, uint64_t>& 
     uint64_t modif_time;
 
     // Receiving name size and allocating memory
-    recv(socket_fd, &name_size, sizeof(size_t), 0);
+    readn(socket_fd, &name_size, sizeof(size_t));
     file_name = (char*)malloc(name_size+1);
     // Receiving file name
-    recv(socket_fd, file_name, name_size, 0);
+    readn(socket_fd, file_name, name_size);
     file_name[name_size] = '\0';
     // Receiving modification time
-    recv(socket_fd, &modif_time, sizeof(uint64_t), 0);
+    readn(socket_fd, &modif_time, sizeof(uint64_t));
     string fname = file_name;
     files.insert({fname, modif_time});
-    // Logging
-    log_file->seekp(0, std::ios::end);
-    *log_file << "Recieving file: " << fname << " with mod time: " << modif_time << " name size: " << name_size << endl;
+
 }
 
 void SocketsUtil::send_file_over_socket(const string& file_name)
@@ -54,25 +99,23 @@ void SocketsUtil::send_file_over_socket(const string& file_name)
 
     // Send name size
     int name_size = file_name.length();
-    write(socket_fd, &name_size, sizeof(int));
+    writen(socket_fd, &name_size, sizeof(int));
     // Send name
-    write(socket_fd, file_name.c_str(), name_size);
+    writen(socket_fd, file_name.c_str(), name_size);
 
     // Open file 
 	int file_desc = open(full_name.c_str(), O_RDONLY);
-    if (file_desc < 0) comp->err_n_die("File %s could not be opened.\n", full_name.c_str());
+    if (file_desc < 0) throw runtime_error("File " + full_name + " could not be opened.");
 	// Send file size
 	int file_size = obj.st_size;
-	write(socket_fd, &file_size, sizeof(int));
+	writen(socket_fd, &file_size, sizeof(int));
     // Send file data in a loop
     off_t offset = 0;
     int remaining = file_size;
     while (remaining > 0) {
         int sent = sendfile(socket_fd, file_desc, &offset, remaining);
         if (sent <= 0) {
-            perror("Error sending file");
-            close(file_desc);
-            return;
+            throw SocketError();
         }
         remaining -= sent;
     }
@@ -87,15 +130,16 @@ void SocketsUtil::receive_file_over_socket() {
     char *file_name_c;
 	char *data;
     // Receiving name size and allocating memory
-    recv(socket_fd, &name_size, sizeof(int), 0);
-    file_name_c = (char*)malloc(name_size+1);
+    readn(socket_fd, &name_size, sizeof(int));
+
     // Receiving file name
-    recv(socket_fd, file_name_c, name_size, 0);
+    file_name_c = (char*)malloc(name_size+1);
+    readn(socket_fd, file_name_c, name_size);
     file_name_c[name_size] = '\0';
     string file_name = file_name_c;
     free(file_name_c);
 	// Recieving file size and allocating memory
-	recv(socket_fd, &file_size, sizeof(int), 0);
+	readn(socket_fd, &file_size, sizeof(int));
 	data = (char*)malloc(file_size+1);
 	// Creating a new file, receiving and storing data in the file.
     string full_name = base_dir + '/' + file_name;
@@ -104,21 +148,9 @@ void SocketsUtil::receive_file_over_socket() {
 
 	FILE *fp = fopen(full_name.c_str(), "w");
 
-    int remaining = file_size;
-    size_t total_received = 0;
-    while (remaining > 0) {
-        size_t r = recv(socket_fd, data + total_received, remaining, 0);
-        if (r <= 0) {
-            perror("recv");
-            fclose(fp);
-            free(data);
-            exit(EXIT_FAILURE);
-        }
-        total_received += r;
-        remaining -= r;
-    }
-    data[total_received] = '\0'; 
-    fwrite(data, 1, total_received, fp);
+    readn(socket_fd, data, file_size);
+    data[file_size] = '\0'; 
+    fwrite(data, 1, file_size, fp);
 
 	fclose(fp);
 }

@@ -8,8 +8,8 @@
             "name": "comp1",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/comp1",
-            "args": [],
+            "program": "${workspaceFolder}/build/src/comp1_exec",
+            "args": ["/home/aleksandrab/sync", "192.168.0.11"],
             "stopAtEntry": false,
             "environment": [],
             "cwd": ".",
@@ -27,15 +27,15 @@
             "ignoreFailures": true
             }
             ],
-            "preLaunchTask": "make",
+            "preLaunchTask": "cmake-build",
             "miDebuggerPath": "/usr/bin/gdb"
         },
         {
             "name": "comp2",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/comp2",
-            "args": [],
+            "program": "${workspaceFolder}/build/src/comp2_exec",
+            "args": ["/home/aleksandra/sync"],
             "stopAtEntry": false,
             "environment": [],
             "cwd": ".",
@@ -53,7 +53,7 @@
             "ignoreFailures": true
             }
             ],
-            "preLaunchTask": "make",
+            "preLaunchTask": "cmake-build",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

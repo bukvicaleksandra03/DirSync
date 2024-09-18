@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/comp2_exec.dir/comp.cpp.o CMakeFiles/comp2_exec.dir/file_sys_util.cpp.o CMakeFiles/comp2_exec.dir/sockets_util.cpp.o comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o comp2/CMakeFiles/comp2.dir/comp2.cpp.o -o comp2_exec

@@ -1,0 +1,5 @@
+Hello 
+cherry - 3
+banana - 2
+apple - 1
+

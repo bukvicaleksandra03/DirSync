@@ -4,8 +4,11 @@ Comp *Comp::instance = nullptr;
 
 Comp::Comp(const string &dir_to_sync)
 {
+    reconnect_needed = 0;
     this->dir_to_sync = dir_to_sync;
-    log_file.open(dir_to_sync + '/' + "sync_log.txt", ios::out | ios::app);
+
+    log_file = make_shared<LogFile>(dir_to_sync + '/' + "sync_log.txt");
+    last_sync_state = make_shared<FileStateFile>(dir_to_sync + '/' + "last_sync_state.txt");
 
     instance = this;
 
@@ -13,13 +16,11 @@ Comp::Comp(const string &dir_to_sync)
     exclude_files.insert({"sync_log.txt"});
     exclude_files.insert({"last_sync_state.txt"});
 
-
-    fsu = new FileSysUtil(dir_to_sync, &log_file, &curr_files, &curr_dirs, &last_sync_state, this, exclude_files);
-    sock_util = new SocketsUtil(dir_to_sync, fsu, &log_file, this);
+    fsu = new FileSysUtil(dir_to_sync, log_file, last_sync_state, &curr_files, &curr_dirs, exclude_files);
+    sock_util = new SocketsUtil(dir_to_sync, fsu, log_file);
 }
 
 Comp::~Comp()  {
-    log_file.close();
     delete fsu;
     delete sock_util;
 }
@@ -44,13 +45,6 @@ void Comp::err_n_die(const char *fmt, ...)
         fflush(stdout);
     }
     va_end(ap);
-
-    if (log_file.is_open()) {
-        log_file.close();
-    }
-    if (last_sync_state.is_open()) {
-        last_sync_state.close();
-    }
 
     close(sockfd);
 }
