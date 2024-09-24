@@ -150,6 +150,7 @@ src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o: /home/aleksandra/Desktop/DirSync/src
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -481,6 +482,7 @@ src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: /home/aleksandra/Desktop/DirSyn
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -870,6 +872,10 @@ src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: /home/aleksandra/Desktop/DirSyn
 
 /usr/include/linux/close_range.h:
 
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/features.h:
+
 /usr/include/c++/13/bits/predefined_ops.h:
 
 /usr/include/c++/13/bits/ostream_insert.h:
@@ -998,10 +1004,6 @@ src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: /home/aleksandra/Desktop/DirSyn
 
 /usr/include/c++/13/bits/stl_raw_storage_iter.h:
 
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/features.h:
-
 /usr/include/asm-generic/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/ss_flags.h:
@@ -1015,6 +1017,8 @@ src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: /home/aleksandra/Desktop/DirSyn
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/13/bits/sstream.tcc:
+
+/usr/include/c++/13/stdlib.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
 

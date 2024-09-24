@@ -1,1 +1,2 @@
-/usr/bin/rsync -avz /home/aleksandra/Personal-Projects/ aleksandrab@192.168.0.12:/home/aleksandrab/Personal-Projects
+
+./build/src/comp2_exec /home/aleksandra/sync

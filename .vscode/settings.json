@@ -61,7 +61,9 @@
     "fstream": "cpp",
     "iomanip": "cpp",
     "sstream": "cpp",
-    "filesystem": "cpp"
+    "filesystem": "cpp",
+    "cstring": "cpp",
+    "cinttypes": "cpp"
   },
   "editor.formatOnSave": true,
   "C_Cpp_Runner.cCompilerPath": "gcc",

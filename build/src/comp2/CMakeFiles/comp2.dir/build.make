@@ -73,7 +73,7 @@ src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: src/comp2/CMakeFiles/comp2.dir/
 src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: /home/aleksandra/Desktop/DirSync/src/comp2/comp2_main.cpp
 src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o: src/comp2/CMakeFiles/comp2.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aleksandra/Desktop/DirSync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o"
-	cd /home/aleksandra/Desktop/DirSync/build/src/comp2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o -MF CMakeFiles/comp2.dir/comp2_main.cpp.o.d -o CMakeFiles/comp2.dir/comp2_main.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp2/comp2_main.cpp
+	cd /home/aleksandra/Desktop/DirSync/build/src/comp2 && $(CMAKE_COMMAND) -E __run_co_compile --tidy="/usr/bin/clang-tidy;-checks=*;--extra-arg-before=--driver-mode=g++" --source=/home/aleksandra/Desktop/DirSync/src/comp2/comp2_main.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.o -MF CMakeFiles/comp2.dir/comp2_main.cpp.o.d -o CMakeFiles/comp2.dir/comp2_main.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp2/comp2_main.cpp
 
 src/comp2/CMakeFiles/comp2.dir/comp2_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/comp2.dir/comp2_main.cpp.i"
@@ -87,7 +87,7 @@ src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o: src/comp2/CMakeFiles/comp2.dir/flags
 src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o: /home/aleksandra/Desktop/DirSync/src/comp2/comp2.cpp
 src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o: src/comp2/CMakeFiles/comp2.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aleksandra/Desktop/DirSync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o"
-	cd /home/aleksandra/Desktop/DirSync/build/src/comp2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o -MF CMakeFiles/comp2.dir/comp2.cpp.o.d -o CMakeFiles/comp2.dir/comp2.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp2/comp2.cpp
+	cd /home/aleksandra/Desktop/DirSync/build/src/comp2 && $(CMAKE_COMMAND) -E __run_co_compile --tidy="/usr/bin/clang-tidy;-checks=*;--extra-arg-before=--driver-mode=g++" --source=/home/aleksandra/Desktop/DirSync/src/comp2/comp2.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/comp2/CMakeFiles/comp2.dir/comp2.cpp.o -MF CMakeFiles/comp2.dir/comp2.cpp.o.d -o CMakeFiles/comp2.dir/comp2.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp2/comp2.cpp
 
 src/comp2/CMakeFiles/comp2.dir/comp2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/comp2.dir/comp2.cpp.i"

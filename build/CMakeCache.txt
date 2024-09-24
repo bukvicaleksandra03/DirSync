@@ -18,6 +18,12 @@
 BUILD_TESTING:BOOL=ON
 
 //Path to a program.
+CLANG-FORMAT_PATH:FILEPATH=/usr/bin/clang-format
+
+//Path to a program.
+CLANG-TIDY_PATH:FILEPATH=/usr/bin/clang-tidy
+
+//Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
 //Path to a program.

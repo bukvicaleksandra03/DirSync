@@ -1,0 +1,7 @@
+BasedOnStyle: LLVM
+ColumnLimit: 80
+PointerAlignment: Left
+UseTab: Never
+AllowShortLoopsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true

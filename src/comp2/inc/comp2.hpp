@@ -7,17 +7,16 @@
 
 class Comp2 : public Comp {
 private:
-    static void signal_handler(int signal_num);
-    void register_signals();
-    void err_n_die(const char *fmt, ...) override;
+  static void signal_handler(int signal_num);
+  void register_signals();
+  void err_n_die(const char* fmt, ...) override;
 
 public:
-    Comp2(const string& dir_to_sync);
+  Comp2(const std::string& dir_to_sync);
 
-    void connect_and_run() override;
+  void connect_and_run() override;
 
-    void listen_for_connection() override;
-
+  void listen_for_connection() override;
 };
 
 #endif

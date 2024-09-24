@@ -149,6 +149,7 @@ src/CMakeFiles/comp1_exec.dir/comp.cpp.o: /home/aleksandra/Desktop/DirSync/src/c
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -479,6 +480,7 @@ src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o: /home/aleksandra/Desktop/DirS
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -794,6 +796,7 @@ src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: /home/aleksandra/Desktop/DirSy
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -1318,6 +1321,8 @@ src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: /home/aleksandra/Desktop/DirSy
 
 /usr/include/c++/13/bits/sstream.tcc:
 
+/usr/include/c++/13/stdlib.h:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
 
 /home/aleksandra/Desktop/DirSync/src/inc/comp.hpp:
@@ -1556,6 +1561,10 @@ src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: /home/aleksandra/Desktop/DirSy
 
 /usr/include/c++/13/iosfwd:
 
+/usr/include/libintl.h:
+
+/usr/include/c++/13/iostream:
+
 /usr/include/c++/13/locale:
 
 /usr/include/c++/13/memory:
@@ -1603,7 +1612,3 @@ src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: /home/aleksandra/Desktop/DirSy
 /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
 
 /usr/include/features-time64.h:
-
-/usr/include/c++/13/iostream:
-
-/usr/include/libintl.h:

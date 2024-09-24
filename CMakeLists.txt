@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 project(DirSync CXX)
 include(CTest)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 add_subdirectory(src)
 add_subdirectory(test)

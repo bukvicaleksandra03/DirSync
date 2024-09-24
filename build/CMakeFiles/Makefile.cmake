@@ -10,6 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/aleksandra/Desktop/DirSync/CMakeLists.txt"
   "CMakeFiles/3.30.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.30.3/CMakeSystem.cmake"
+  "/home/aleksandra/Desktop/DirSync/cmake/ClangTidy.cmake"
+  "/home/aleksandra/Desktop/DirSync/cmake/Format.cmake"
   "/home/aleksandra/Desktop/DirSync/src/CMakeLists.txt"
   "/home/aleksandra/Desktop/DirSync/src/comp1/CMakeLists.txt"
   "/home/aleksandra/Desktop/DirSync/src/comp2/CMakeLists.txt"
