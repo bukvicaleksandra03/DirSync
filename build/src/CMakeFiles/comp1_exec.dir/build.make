@@ -73,7 +73,7 @@ src/CMakeFiles/comp1_exec.dir/comp.cpp.o: src/CMakeFiles/comp1_exec.dir/flags.ma
 src/CMakeFiles/comp1_exec.dir/comp.cpp.o: /home/aleksandra/Desktop/DirSync/src/comp.cpp
 src/CMakeFiles/comp1_exec.dir/comp.cpp.o: src/CMakeFiles/comp1_exec.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aleksandra/Desktop/DirSync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/comp1_exec.dir/comp.cpp.o"
-	cd /home/aleksandra/Desktop/DirSync/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/comp.cpp.o -MF CMakeFiles/comp1_exec.dir/comp.cpp.o.d -o CMakeFiles/comp1_exec.dir/comp.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp.cpp
+	cd /home/aleksandra/Desktop/DirSync/build/src && $(CMAKE_COMMAND) -E __run_co_compile --tidy="/usr/bin/clang-tidy;-checks=*;--extra-arg-before=--driver-mode=g++" --source=/home/aleksandra/Desktop/DirSync/src/comp.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/comp.cpp.o -MF CMakeFiles/comp1_exec.dir/comp.cpp.o.d -o CMakeFiles/comp1_exec.dir/comp.cpp.o -c /home/aleksandra/Desktop/DirSync/src/comp.cpp
 
 src/CMakeFiles/comp1_exec.dir/comp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/comp1_exec.dir/comp.cpp.i"
@@ -87,7 +87,7 @@ src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o: src/CMakeFiles/comp1_exec.dir
 src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o: /home/aleksandra/Desktop/DirSync/src/file_sys_util.cpp
 src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o: src/CMakeFiles/comp1_exec.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aleksandra/Desktop/DirSync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o"
-	cd /home/aleksandra/Desktop/DirSync/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o -MF CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o.d -o CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o -c /home/aleksandra/Desktop/DirSync/src/file_sys_util.cpp
+	cd /home/aleksandra/Desktop/DirSync/build/src && $(CMAKE_COMMAND) -E __run_co_compile --tidy="/usr/bin/clang-tidy;-checks=*;--extra-arg-before=--driver-mode=g++" --source=/home/aleksandra/Desktop/DirSync/src/file_sys_util.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o -MF CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o.d -o CMakeFiles/comp1_exec.dir/file_sys_util.cpp.o -c /home/aleksandra/Desktop/DirSync/src/file_sys_util.cpp
 
 src/CMakeFiles/comp1_exec.dir/file_sys_util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/comp1_exec.dir/file_sys_util.cpp.i"
@@ -101,7 +101,7 @@ src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: src/CMakeFiles/comp1_exec.dir/
 src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: /home/aleksandra/Desktop/DirSync/src/sockets_util.cpp
 src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o: src/CMakeFiles/comp1_exec.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/aleksandra/Desktop/DirSync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o"
-	cd /home/aleksandra/Desktop/DirSync/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o -MF CMakeFiles/comp1_exec.dir/sockets_util.cpp.o.d -o CMakeFiles/comp1_exec.dir/sockets_util.cpp.o -c /home/aleksandra/Desktop/DirSync/src/sockets_util.cpp
+	cd /home/aleksandra/Desktop/DirSync/build/src && $(CMAKE_COMMAND) -E __run_co_compile --tidy="/usr/bin/clang-tidy;-checks=*;--extra-arg-before=--driver-mode=g++" --source=/home/aleksandra/Desktop/DirSync/src/sockets_util.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.o -MF CMakeFiles/comp1_exec.dir/sockets_util.cpp.o.d -o CMakeFiles/comp1_exec.dir/sockets_util.cpp.o -c /home/aleksandra/Desktop/DirSync/src/sockets_util.cpp
 
 src/CMakeFiles/comp1_exec.dir/sockets_util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/comp1_exec.dir/sockets_util.cpp.i"

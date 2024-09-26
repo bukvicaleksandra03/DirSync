@@ -1,9 +1,8 @@
 #ifndef _COMP_HPP_
 #define _COMP_HPP_
 
-#define SYNC_PERIOD 60
-#define TRY_TO_RECONNECT_PERIOD 20
-#define PORT_NUM 18200
+#define SYNC_PERIOD 120
+#define TRY_TO_RECONNECT_PERIOD 60
 #define SA struct sockaddr
 
 extern "C" {

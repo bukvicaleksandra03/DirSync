@@ -1,10 +1,11 @@
 #include "comp2.hpp"
 
-Comp2::Comp2(const std::string& dir_to_sync) : Comp(dir_to_sync) {
+Comp2::Comp2(const std::string& dir_to_sync, const int port_num)
+    : Comp(dir_to_sync) {
   bzero(&servaddr, sizeof(servaddr));
   servaddr.sin_family = AF_INET;
   servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-  servaddr.sin_port = htons(PORT_NUM);
+  servaddr.sin_port = htons(port_num);
 
   register_signals();
 }

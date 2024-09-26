@@ -15,3 +15,7 @@ Format(comp2_exec .)
 
 AddClangTidy(comp2_exec)
 AddClangTidy(comp1_exec)
+
+# Install commands
+install(TARGETS comp1_exec DESTINATION bin)
+install(TARGETS comp2_exec DESTINATION bin)

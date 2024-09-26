@@ -12,7 +12,8 @@ private:
   void err_n_die(const char* fmt, ...) override;
 
 public:
-  Comp1(const std::string& dir_to_sync, const std::string& ip_addr);
+  Comp1(const std::string& dir_to_sync, const std::string& ip_addr,
+        const int port_num);
 
   void connect_and_run() override;
 

@@ -12,7 +12,7 @@ private:
   void err_n_die(const char* fmt, ...) override;
 
 public:
-  Comp2(const std::string& dir_to_sync);
+  Comp2(const std::string& dir_to_sync, const int port_num);
 
   void connect_and_run() override;
 

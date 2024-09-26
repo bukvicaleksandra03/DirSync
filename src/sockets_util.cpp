@@ -81,7 +81,7 @@ void SocketsUtil::receive_fname_and_modif_time(
   string fname = file_name;
   files.insert({fname, modif_time});
 
-  delete file_name;
+  free(file_name);
 }
 
 void SocketsUtil::send_file_over_socket(const string& file_name) {
@@ -133,7 +133,6 @@ void SocketsUtil::receive_file_over_socket() {
   readn(socket_fd, file_name_c, name_size);
   file_name_c[name_size] = '\0';
   string file_name = file_name_c;
-  free(file_name_c);
   // Recieving file size and allocating memory
   readn(socket_fd, &file_size, sizeof(int));
   data = static_cast<char*>(malloc(file_size + 1));
@@ -150,6 +149,6 @@ void SocketsUtil::receive_file_over_socket() {
 
   fclose(fp);
 
-  delete file_name_c;
-  delete data;
+  free(file_name_c);
+  free(data);
 }

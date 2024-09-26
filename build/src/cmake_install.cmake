@@ -52,3 +52,43 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/aleksandra/Desktop/DirSync/build/src/comp2/cmake_install.cmake")
 endif()
 
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/aleksandra/Desktop/DirSync/build/src/comp1_exec")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp1_exec")
+    endif()
+  endif()
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  include("/home/aleksandra/Desktop/DirSync/build/src/CMakeFiles/comp1_exec.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/aleksandra/Desktop/DirSync/build/src/comp2_exec")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/comp2_exec")
+    endif()
+  endif()
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  include("/home/aleksandra/Desktop/DirSync/build/src/CMakeFiles/comp2_exec.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
+endif()
+

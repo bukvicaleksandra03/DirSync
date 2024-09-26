@@ -1,10 +1,11 @@
 #include "comp1.hpp"
 
-Comp1::Comp1(const std::string& dir_to_sync, const std::string& ip_addr)
+Comp1::Comp1(const std::string& dir_to_sync, const std::string& ip_addr,
+             const int port_num)
     : Comp(dir_to_sync) {
   bzero(&servaddr, sizeof(servaddr));
   servaddr.sin_family = AF_INET;
-  servaddr.sin_port = htons(PORT_NUM);
+  servaddr.sin_port = htons(port_num);
 
   if (inet_pton(AF_INET, ip_addr.c_str(), &servaddr.sin_addr) <= 0)
     err_n_die("inet_pton error for %s", ip_addr.c_str());
